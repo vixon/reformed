@@ -3,16 +3,14 @@ require 'reformed/form_builder'
 module Reformed
   module FormHelper
 
-    def reform_for(record_or_name_or_array, *args, &proc)
-      options = args.extract_options!
+    def reform_for(record, options = {}, &block) 
       options[:builder] ||= Reformed::FormBuilder
-      form_for(record_or_name_or_array, *(args << options), &proc)
+      form_for(record, options, &block)
     end
 
-    def reform_fields_for(record_or_name_or_array, *args, &block)
-      options = args.extract_options!
+    def reform_fields_for(record, options = {}, &block) 
       options[:builder] ||= Reformed::FormBuilder
-      fields_for(record_or_name_or_array, *(args << options), &block)
+      fields_for(record, options, &block)
     end
 
   end

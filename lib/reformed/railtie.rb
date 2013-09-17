@@ -1,4 +1,5 @@
 require 'reformed'
+require "reformed/form_helper"
 require 'rails/railtie'
 
 module Reformed

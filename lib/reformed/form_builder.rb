@@ -15,52 +15,41 @@ module Reformed
       "<span>#{controls[:label]}</span>"
     }
     
-    def wrap(method, options = {}, &block)
+    def input(method, options = {}, &block)
       controls = {}
-      controls[:input] = text_field(method, extract_options(options, :input))
-      controls[:label] = label_wrap(method, extract_options(options, :label))
-      controls[:hint] = hint(method, extract_options(options, :hint))
-      controls[:error] = error(method, extract_options(options, :error))
-
-      @@input_wrapper.call(controls)
+      controls[:input] = input_wrap(method, control_options(options, :input))
+      controls[:label] = label_wrap(method, control_options(options, :label))
+      controls[:hint] = hint_wrap(method, control_options(options, :hint))
+      controls[:error] = error_wrap(method, control_options(options, :error))
+      raw @@input_wrapper.call(controls)
     end
 
     def input_wrap(method, options, &block)
-
-    end
-
-    def hint_wrap(method, options, &block)
-
-    end
-
-    def error_wrap(method, options, &block)
-
+      text_field(method, options)
     end
 
     def label_wrap(method, options = {}, &block)
       @@label_wrapper.call(label: label(method, options = {}, &block))
     end
 
-    def extract_options(options, type = nil)
-      options[type.to_sym] || {}
+    def hint_wrap(method, options, &block)
+      # TODO
     end
 
-    def input(method, options = {})
-      raw wrap(method, options)
-    end
-
-    def hint(method, options = {})
-
-    end
-
-    def error(method, options = {})
-
+    def error_wrap(method, options, &block)
+      # TODO
     end
 
     def reform_fields_for(record_or_name_or_array, *args, &block)
       options = args.extract_options!
       options[:builder] ||= self.class
       fields_for(record_or_name_or_array, *(args << options), &block)
+    end
+
+    private
+
+    def control_options(options, type = nil)
+      options[type.to_sym] || {}
     end
 
   end

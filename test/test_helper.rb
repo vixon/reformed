@@ -16,6 +16,10 @@ require 'action_view/template'
 require 'action_view/test_case'
 
 require 'reformed'
+require 'reformed/form_helper'
+
+ActionView::Base.send :include, Reformed::FormHelper
+ActionView::TestCase.send :include, Reformed::FormHelper
 
 class ActiveSupport::TestCase
 
