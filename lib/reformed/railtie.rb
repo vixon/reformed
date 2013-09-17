@@ -1,5 +1,5 @@
 require 'reformed'
-require 'rails'
+require 'rails/railtie'
 
 module Reformed
   class Railtie < Rails::Railtie

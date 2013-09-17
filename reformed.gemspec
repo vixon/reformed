@@ -20,4 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+
+  spec.add_dependency('railties', '>= 4.0.0', '< 4.1')
+  spec.add_dependency('activemodel', '>= 4.0.0', '< 4.1')
+  spec.add_dependency('actionpack', '>= 4.0.0', '< 4.1')
+  spec.add_dependency('activesupport', '>= 4.0.0', '< 4.1')
 end
