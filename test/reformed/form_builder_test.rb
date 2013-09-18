@@ -69,8 +69,24 @@ class Reformed::FormBuilderTest < ActionView::TestCase
     end
   end
 
-  test "extract options" do
-    skip
+  test "infer types from method" do 
+    reform_for(@user, url: '/') do |f|
+      assert :string, f.send(:as, :name)
+      assert :text, f.send(:as, :body)
+
+      assert :number, f.send(:as, :age)
+      assert :number, f.send(:as, :price)
+      assert :number, f.send(:as, :currency)
+
+      assert :url, f.send(:as, :url)
+      assert :email, f.send(:as, :email)
+      assert :password, f.send(:as, :password)
+
+      assert :datetime, f.send(:as, :birthdate)
+      assert :datetime, f.send(:as, :datecolumn)
+      assert :datetime, f.send(:as, :timecolumn)
+      assert :datetime, f.send(:as, :timestampcolumn)
+    end
   end
 
   test "hint" do 

@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Reformed::VERSION
   spec.authors       = ["Jason Torres"]
   spec.email         = ["jason.e.torres@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Better Rails Forms}
+  spec.summary       = %q{A better rails form builder that supports multiple}
+  spec.homepage      = "http://github.com/vixon/reformed"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -19,11 +19,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "mocha"
   spec.add_development_dependency "rake"
-
-
-  spec.add_dependency('railties', '>= 4.0.0', '< 4.1')
-  spec.add_dependency('activemodel', '>= 4.0.0', '< 4.1')
-  spec.add_dependency('actionpack', '>= 4.0.0', '< 4.1')
-  spec.add_dependency('activesupport', '>= 4.0.0', '< 4.1')
+  spec.add_development_dependency('activerecord', '>= 4.0.0', '< 4.1')
+  spec.add_development_dependency('railties', '>= 4.0.0', '< 4.1')
+  spec.add_development_dependency('activemodel', '>= 4.0.0', '< 4.1')
+  spec.add_development_dependency('actionpack', '>= 4.0.0', '< 4.1')
+  spec.add_development_dependency('activesupport', '>= 4.0.0', '< 4.1')
 end
