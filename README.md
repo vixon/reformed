@@ -1,7 +1,7 @@
 Reformed
 ========
 
-Better Rails 3+ and 4+ Form Builder with support for any CSS Framework. Natively supports Bootstrap 2 and 3, Zurb 3 and 4 via customization.
+Better Rails 3+ and 4+ Form Builder which can easily support Bootstrap 2 and 3, Zurb 3 and 4 or any CSS frameworks by customizing the wrappers.
 
 ### Installation
 
@@ -19,7 +19,7 @@ It's very easy to use, just do this
 
 ### Customization
 
-The best feature ever. Customization supports lambda
+The best feature ever. You can easily customize the wrappers to your own need by overriding the following values. Just follow the following examples:
 
     Reformed::FormBuilder.input_wrapper = lambda { |controls, options|
       "<div class=\"input-control\">#{controls[:label]} #{controls[:input]} #{controls[:error]} #{controls[:hint]}</div>" 
@@ -38,7 +38,7 @@ The best feature ever. Customization supports lambda
     }
 
 
-More examples to follow soon
+More examples to follow soon for Bootstrap 3 and more!
 
 ## HTML5 
 
@@ -54,6 +54,9 @@ By default, Reformed will render your controls as html5, you can turn it off by 
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## Bugs
+
+Please feel free to contact us or file a github issue.
 
 ## Contributors
 
