@@ -18,7 +18,7 @@ module Reformed
     def input(method, options = {}, &block)
       controls = {}
       controls[:input] = input_wrap(method, control_options(options, :input))
-      controls[:label] = label_wrap(method, control_options(options, :label))
+      controls[:label] = label_wrap(method, control_options(options.merge(method: method), :label))
       controls[:hint] = hint_wrap(method, control_options(options, :hint))
       controls[:error] = error_wrap(method, control_options(options, :error))
       raw @@input_wrapper.call(controls)
@@ -29,7 +29,7 @@ module Reformed
     end
 
     def label_wrap(method, options = {}, &block)
-      @@label_wrapper.call(label: label(method, options = {}, &block))
+      @@label_wrapper.call(label: label(method, options[:label], &block))
     end
 
     def hint_wrap(method, options, &block)
@@ -49,7 +49,11 @@ module Reformed
     private
 
     def control_options(options, type = nil)
-      options[type.to_sym] || {}
+      if type == :label
+        {label: options[:label]}
+      else
+        options[type.to_sym] || {}
+      end
     end
 
   end
