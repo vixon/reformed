@@ -179,7 +179,6 @@ class Reformed::FormBuilderTest < ActionView::TestCase
     }
 
     reform_for(@user, url: '/') do |f|
-      #assert_match "", 
       assert_match '<div class="input-control"><span class="label-wrapper"><label for="user_name">Name</label></span> <input class="input" id="user_name" name="user[name]" placeholder="a placeholder" style="width:100px;" type="text" value="Lalala" /> <span class="error">I have an error!</span> <span class="hint">This is a hint</span></div', f.input(:name, hint: 'Full Name', hint: 'This is a hint', error: 'I have an error!', placeholder: 'a placeholder', style: "width:100px;", class: 'input')
     end
   end
