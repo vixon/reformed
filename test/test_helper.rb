@@ -40,19 +40,29 @@ class User
   end
 
   column :name, :string
+  column :url, :string
   column :email, :string
   column :age, :integer
   column :price, :float
   column :currency, :decimal
   column :birthdate, :datetime
+  column :phone, :string
+
+  column :gender, :string
 
   column :datecolumn, :date
   column :timecolumn, :time
   column :timestampcolumn, :timestamp
   column :body, :text
+  column :cute, :boolean
 
   def column_for_attribute(attr)
     columns.select { |c| c.name.to_s == attr.to_s }.first
   end
 
 end
+
+#class User < FakeModel
+  #column :name, :string
+  #column :email, :string
+#end
