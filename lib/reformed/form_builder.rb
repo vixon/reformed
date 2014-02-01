@@ -2,12 +2,12 @@ module Reformed
   class FormBuilder < ActionView::Helpers::FormBuilder
     include ActionView::Helpers::OutputSafetyHelper
 
-    cattr_accessor :input_wrapper, :label_wrapper, :html5
+    cattr_accessor :input_wrapper, :label_wrapper, :html5, :error_wrapper
 
     @@html5 = true
 
     @@input_wrapper = lambda { |controls, options|
-      "<div class=\"input-control\">#{controls[:label]} #{controls[:input]} #{controls[:error]} #{controls[:hint]}</div>" 
+      "<div class=\"input-control\">#{controls[:label]} #{controls[:input]} #{controls[:error]} #{controls[:hint]}</div>"
     }
 
     @@label_wrapper = lambda { |controls, options|
@@ -21,12 +21,12 @@ module Reformed
     @@error_wrapper = lambda { |message, options|
       "<span class=\"error\">#{message}</span>"
     }
-    
+
     def input(method, options = {}, &block)
       controls = {}
 
       if options[:hint]
-        controls[:hint] = hint_wrap(options.delete(:hint), control_options(options)) 
+        controls[:hint] = hint_wrap(options.delete(:hint), control_options(options))
       end
 
       if options[:error]
@@ -94,7 +94,7 @@ module Reformed
     private
 
     def as(method)
-      
+
       # determine the field type
       case "#{method}"
         when /url/      then return (html5? ? :url : :string)
